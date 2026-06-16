@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miguel Mallada | Electropar S.A.</title>
+  <meta name="description" content="Ingeniero de Ventas – Contratista y Gobierno | Electropar S.A." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #202733;
+      --navy2:   #16202e;
+      --electric:#F5A623;
+      --gold:    #E8931A;
+      --light:   #EFF2F7;
+      --muted:   #8A97AC;
+      --white:   #FFFFFF;
+    }
+
+    body {
+      background: var(--navy2);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* ── Card shell ── */
+    .card {
+      width: 100%;
+      max-width: 390px;
+      background: var(--navy);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+      position: relative;
+    }
+
+    /* ── Header / hero ── */
+    .hero {
+      background: linear-gradient(145deg, #1a2440 0%, var(--navy) 60%, #0d1520 100%);
+      padding: 40px 32px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* electric circuit accent lines */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 220px; height: 220px;
+      border: 2px solid rgba(245,166,35,0.12);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -10px; right: -10px;
+      width: 120px; height: 120px;
+      border: 1.5px solid rgba(245,166,35,0.2);
+      border-radius: 50%;
+    }
+
+    /* lightning bolt accent */
+    .bolt {
+      position: absolute;
+      top: 20px; right: 28px;
+      font-size: 38px;
+      opacity: 0.18;
+      filter: drop-shadow(0 0 8px var(--electric));
+    }
+
+    .company-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .company-tag::before {
+      content: '';
+      display: block;
+      width: 18px; height: 2px;
+      background: var(--electric);
+    }
+
+    .name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .name span { color: var(--electric); }
+
+    .role {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 260px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 3px;
+      background: linear-gradient(90deg, var(--electric) 0%, var(--gold) 40%, transparent 100%);
+    }
+
+    /* ── Contact section ── */
+    .contacts {
+      padding: 28px 32px 8px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row:hover .contact-text { color: var(--electric); }
+
+    .icon-wrap {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(245,166,35,0.1);
+      border: 1px solid rgba(245,166,35,0.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .contact-meta { font-size: 10px; color: var(--muted); margin-bottom: 2px; }
+    .contact-text { font-size: 14px; font-weight: 500; color: var(--light); transition: color 0.15s; }
+
+    /* ── Address ── */
+    .address-block {
+      margin: 0 32px 24px;
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+    }
+    .address-block .section-label { margin-bottom: 8px; }
+    .address-text {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .address-text strong { color: var(--light); font-weight: 500; }
+
+    /* ── CTA Buttons ── */
+    .actions {
+      padding: 0 32px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 20px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: transform 0.12s, box-shadow 0.12s;
+      letter-spacing: 0.2px;
+    }
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--electric), var(--gold));
+      color: var(--navy2);
+      box-shadow: 0 6px 24px rgba(245,166,35,0.3);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 32px rgba(245,166,35,0.45); }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: var(--light);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    .btn-web {
+      background: rgba(245,166,35,0.08);
+      color: var(--electric);
+      border: 1px solid rgba(245,166,35,0.25);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 0 32px 28px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      bottom: 30px; left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1e2d1e;
+      border: 1px solid #3a7a3a;
+      color: #7dca7d;
+      padding: 12px 22px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
+      pointer-events: none;
+      z-index: 999;
+      white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="bolt">⚡</div>
+    <div class="company-tag">ELECTROPAR S.A.</div>
+    <div class="name">Miguel<br><span>Mallada</span></div>
+    <div class="role">Ingeniero de Ventas<br>Contratista y Gobierno</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONTACTOS -->
+  <div class="contacts">
+    <div class="section-label">Contacto</div>
+
+    <a class="contact-row" href="mailto:mmallada@electropar.com.py">
+      <div class="icon-wrap">✉️</div>
+      <div>
+        <div class="contact-meta">Correo electrónico</div>
+        <div class="contact-text">mmallada@electropar.com.py</div>
+      </div>
+    </a>
+
+    <a class="contact-row" href="tel:+59521616711">
+      <div class="icon-wrap">📞</div>
+      <div>
+        <div class="contact-meta">Teléfono oficina</div>
+        <div class="contact-text">+595 21 616-7110</div>
+      </div>
+    </a>
+
+    <a class="contact-row" href="tel:+595985819258">
+      <div class="icon-wrap">📱</div>
+      <div>
+        <div class="contact-meta">Móvil</div>
+        <div class="contact-text">+595 985 819 258</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- DIRECCIÓN -->
+  <div class="address-block">
+    <div class="section-label">Dirección</div>
+    <div class="address-text">
+      <strong>Avda. Aviadores del Chaco 2806 esq. Cañada</strong><br>
+      Edificio Plaza Center Molas López – Piso 2<br>
+      Asunción, Paraguay · CP 1401
+    </div>
+  </div>
+
+  <!-- ACCIONES -->
+  <div class="actions">
+    <button class="btn btn-primary" onclick="downloadVCard()">
+      💾 Guardar Contacto
+    </button>
+    <a class="btn btn-secondary" href="https://wa.me/595985819258" target="_blank">
+      💬 WhatsApp
+    </a>
+    <a class="btn btn-web" href="https://www.electropar.com.py" target="_blank">
+      🌐 www.electropar.com.py
+    </a>
+  </div>
+
+  <div class="footer">⚡ Soluciones con Energía · Electropar S.A.</div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">✓ Contacto guardado en tu dispositivo</div>
+
+<script>
+  function downloadVCard() {
+    const vcard = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      "FN:Miguel Mallada",
+      "N:Mallada;Miguel;;;",
+      "ORG:ELECTROPAR S.A.",
+      "TITLE:Ingeniero de Ventas - Contratista y Gobierno",
+      "EMAIL;TYPE=WORK:mmallada@electropar.com.py",
+      "TEL;TYPE=WORK,VOICE:+59521616711",
+      "TEL;TYPE=CELL:+595985819258",
+      "ADR;TYPE=WORK:;;Avda. Aviadores del Chaco 2806 esq. Cañada - Edif. Plaza Center Molas López Piso 2;Asunción;;1401;Paraguay",
+      "URL:https://www.electropar.com.py",
+      "END:VCARD"
+    ].join("\r\n");
+
+    const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Miguel_Mallada_Electropar.vcf";
+    a.click();
+    URL.revokeObjectURL(url);
+
+    const toast = document.getElementById("toast");
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
+  }
+</script>
+
+</body>
+</html>
